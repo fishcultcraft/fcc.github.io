@@ -74,7 +74,7 @@ hr {
     font-family: 'PixelCraft Bold', sans-serif;
     padding: 15px 30px;
     background-color: #007bff;
-    color: #fff;
+    color: white;
     border: none;
     border-radius: 5px;
     font-size: 65px;
@@ -102,7 +102,6 @@ hr {
     font-size: 40px;
     color: #000000;
     text-transform: uppercase;
-
 }
 
 /* Pictures Section */
@@ -163,4 +162,51 @@ hr {
 
 .text {
     margin-top: -19px;
+}
+
+.member img{
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+}
+
+#members ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+.member {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+    max-width: 280px;
+    padding: 10px;
+    text-align: center;
+}
+
+#info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+#info h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.memberBio {
+    margin: 0;
+}
+
+.memberBio p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
 }

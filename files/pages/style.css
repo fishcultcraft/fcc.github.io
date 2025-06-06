@@ -1,0 +1,166 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header and Navigation */
+header {
+    width: 100%;
+    background-color: orange;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    text-align: center;
+    padding: 20px 0;
+}
+
+#options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+}
+
+#options a {
+    font-family: 'PixelCraft', sans-serif;
+    font-size: 18px;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+#options a:hover {
+    color: #ffffff;
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+/* Horizontal Rule */
+hr {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background-color: orange;
+    margin: 0;
+}
+
+/* Apply Button Section */
+#apply {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#apply button {
+    font-family: 'PixelCraft Bold', sans-serif;
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 65px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#apply button:hover {
+    background-color: #0056b3;
+}
+
+#adminTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+    width: 100%;
+    background-color: rgb(255, 180, 0);
+}
+
+#admin {
+    font-family: 'PixelCraft Bold', sans-serif;
+    font-size: 40px;
+    color: #000000;
+    text-transform: uppercase;
+
+}
+
+/* Pictures Section */
+#pictures {
+    width: auto;
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+#adminInfo ul {
+    list-style: none;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+/* Portrait and Description Styling */
+.portrait {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    max-width: 1200px;
+    padding: 10px;
+}
+
+.portrait img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+}
+
+.portrait div {
+    flex: 1;
+}
+
+.portrait h2 {
+    font-family: 'PixelCraft Bold', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.portrait h3 {
+    font-family: 'PixelCraft', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #666;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.portrait h4 {
+    font-family: 'PixelCraft', sans-serif;
+    font-size: 13px;
+}
+
+.text {
+    margin-top: -19px;
+}

@@ -1,11 +1,11 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { Sky } from 'three/addons/objects/Sky.js';
 
 const renderer = new THREE.WebGLRenderer({ antialias: true});
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x87CEEB, 1); // Sky-blue background
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -15,18 +15,35 @@ document.body.appendChild(renderer.domElement);
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-camera.position.set(4, 5, 11);
+camera.position.set(25, 10, 11);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.enablePan = false;
-controls.minDistance = 5;
+controls.minDistance = 25; 
 controls.maxDistance = 100;
 controls.minPolarAngle = 0.5;
 controls.maxPolarAngle = 1.5;
 controls.autoRotate = false;
 controls.target = new THREE.Vector3(0, 1, 0);
 controls.update();
+
+const sky = new Sky();
+sky.scale.setScalar(1000)
+scene.add(sky)
+
+const sun = new THREE.Vector3();
+const skyUniforms = sky.material.uniforms;
+skyUniforms['turbidity'].value = 10; // Controls haziness
+skyUniforms['rayleigh'].value = 8; // Controls sky color intensity
+skyUniforms['mieCoefficient'].value = 0.08; // Controls sun halo
+skyUniforms['mieDirectionalG'].value = 0.8; // Controls sun scattering
+
+// Set sun position (affects sky appearance)
+const phi = THREE.MathUtils.degToRad(88); // Close to horizon for a nice effect
+const theta = THREE.MathUtils.degToRad(180); // Sun direction
+sun.setFromSphericalCoords(1, phi, theta);
+skyUniforms['sunPosition'].value.copy(sun);
 
 const groundGeometry = new THREE.PlaneGeometry(20, 20, 32, 32);
 groundGeometry.rotateX(-Math.PI / 2);
@@ -42,7 +59,7 @@ groundMesh.receiveShadow = true;
 scene.add(groundMesh);
 
 const spotLight = new THREE.SpotLight(0xffffff, 500);
-spotLight.position.set(10, 10, 0);
+spotLight.position.copy(sun).multiplyScalar(100);
 spotLight.distance = 1000;
 spotLight.castShadow = true;
 spotLight.shadow.bias = -0.0001;
@@ -50,24 +67,8 @@ spotLight.penumbra = 1;
 scene.add(spotLight);
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+ambientLight.position.copy(sun)
 scene.add(ambientLight)
-
-/* hemisphere lighting and directional lighting
-const hemiLight = new THREE.HemisphereLight(0x87ceeb, 0x555555, 1);
-scene.add(hemiLight);
-
-const directionalLight = new THREE.DirectionalLight(0xffd700, 0.5); // Warm light
-directionalLight.position.set(5, 10, 5);
-directionalLight.castShadow = true;
-directionalLight.shadow.bias = -0.0001;
-directionalLight.shadow.mapSize.width = 1024;
-directionalLight.shadow.mapSize.height = 1024;
-directionalLight.shadow.camera.left = -10;
-directionalLight.shadow.camera.right = 10;
-directionalLight.shadow.camera.top = 10;
-directionalLight.shadow.camera.bottom = -10;
-scene.add(directionalLight);
-*/
 
 const loader = new GLTFLoader().setPath("/model/");
 loader.load('Barrel.gltf', (gltf) => {

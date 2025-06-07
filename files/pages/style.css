@@ -7,13 +7,27 @@
     font-family: Arial, sans-serif;
 }
 
+#progress-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'PixelCraft', sans-serif;
+    font-size: 24px;
+    display: block;
+    z-index: 10; /* Above everything during loading */
+}
+
 #home {
     position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: skyblue;
+    background: rgb(255, 255, 255);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /*
@@ -39,6 +53,16 @@ body {
     align-items: center;
 }
 
+canvas {
+    display: block; /* Remove extra space below canvas */
+    width: 100vw;
+    height: 100vh;
+    position: absolute; /* Position canvas to cover the page */
+    top: 0; /* Align with top of #home */
+    left: 0; /* Align with left of #home */
+    z-index: 0; /* Below button */
+}
+
 /* Header and Navigation */
 header {
     width: 100%;
@@ -52,12 +76,14 @@ nav {
 }
 
 #options {
+    position: relative;
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
     align-items: center;
     list-style: none;
     gap: 30px;
+    z-index: 1;
 }
 
 #options a {
@@ -80,6 +106,9 @@ nav {
 
     #options {
         flex-direction: column;
+        position: relative;
+        flex-wrap: wrap;
+        display: flex;
         gap: 15px;
     }
 
@@ -105,11 +134,14 @@ hr {
 
 /* Apply Button Section */
 #apply {
-    flex: 1;
+    position: absolute; /* Position over canvas */
+    bottom: 20px; /* Space from bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center align */
+    width: 100%; /* Fit button content */
+    z-index: 1; /* Above canvas */
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100%;
 }
 
 #application {
@@ -119,19 +151,17 @@ hr {
 #apply button {
     font-family: 'PixelCraft Bold', sans-serif;
     padding: 15px 30px;
-    background-color: #ff000000;
+    background-color: transparent;
     color: white;
     border: none;
-    border-radius: 0px;
     font-size: 65px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 #apply button:hover {
     transform: scale(1.02);
-    transition: transform 0.2s ease;
 }
 
 #adminTitle {
@@ -245,6 +275,15 @@ hr {
         flex-direction: column;
         gap: 20px;
         align-items: center;
+    }
+
+    #admin {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    #apply button {
+        font-size: 30px;
     }
 }
 

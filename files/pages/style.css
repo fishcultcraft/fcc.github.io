@@ -39,6 +39,7 @@ nav {
 }
 
 #options {
+    flex-wrap: wrap;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,6 +58,21 @@ nav {
 
 #options a:hover {
     color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 10px 0;
+    }
+
+    #options {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #options a {
+        font-size: 16px;
+    }
 }
 
 .no-underline {
@@ -122,7 +138,7 @@ hr {
 
 /* Pictures Section */
 #pictures {
-    width: auto;
+    width: 100%;
     display: flex;
     max-width: 1200px;
     margin: 40px auto;
@@ -137,6 +153,7 @@ hr {
 
 /* Portrait and Description Styling */
 .portrait {
+    width: 100%;
     display: flex;
     align-items: flex-start;
     gap: 25px;
@@ -180,6 +197,42 @@ hr {
     margin-top: -19px;
 }
 
+/* Mobile-Friendly Adjustments */
+@media (max-width: 768px) {
+    .portrait {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .portrait img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .portrait div {
+        width: 100%;
+    }
+
+    .portrait h2 {
+        font-size: 20px;
+    }
+
+    .portrait h3 {
+        font-size: 11px;
+    }
+
+    .portrait h4 {
+        font-size: 12px;
+    }
+
+    #adminInfo ul {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+}
+
 .member img{
     width: 280px;
     height: 280px;
@@ -193,7 +246,7 @@ hr {
 }
 
 #members {
-    max-width: 1000px;
+    max-width: 1200px;
 }
 
 #members ul{
@@ -324,36 +377,65 @@ hr {
     font-family: 'PixelCraft Bold', sans-serif;
 }
 
-#issues { /* to make it side by side*/
+#issues {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 10px;
-    padding: 0px;
+    gap: 50px 0;
+    padding: 20px;
 }
 
+/* Issue Card Styling */
 .issue {
-    flex: 0 0 calc(50% - 20px); /* Two per row, accounting for gap */
+    flex: 1 1 calc(50% - 40px); /* Two per row with spacing */
+    max-width: calc(50% - 40px);
+    box-sizing: border-box;
     padding: 20px;
     list-style: none;
-    box-sizing: border-box;
     text-align: center;
 }
 
+/* Responsive Heading */
 .issue h1 {
-    text-align: center;
     font-family: 'PixelCraft', sans-serif;
-    font-size: 30px;
+    font-size: 2rem;
+    text-align: center;
 }
 
+/* Responsive Image Styling */
 .issue img {
-    height: 900px;
-    width: 700px;
+    width: 100%;
+    height: auto;
+    max-width: 700px;
+    max-height: 900px;
     object-fit: contain;
     box-shadow: 0px 10px 10px black;
+    transition: transform 0.3s ease;
 }
 
 .issue img:hover {
-    transform: scale(1.2);
-    transition: transform 0.3s ease;
+    transform: scale(1.4);
+}
+
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+    .issue {
+        flex: 1 1 100%;
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .issue h1 {
+        font-size: 1.5rem;
+    }
+
+    .issue img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .issue img:hover {
+        transform: scale(1.15);
+    }
 }

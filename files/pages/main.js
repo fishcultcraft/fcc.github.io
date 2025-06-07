@@ -28,6 +28,8 @@ controls.autoRotate = false;
 controls.target = new THREE.Vector3(0, 1, 0);
 controls.update();
 
+scene.fog = new THREE.Fog(0xffffff, 0.00000015, 250.0) //adds fog (probably gotta change this)
+
 const sky = new Sky();
 sky.scale.setScalar(1000)
 scene.add(sky)
@@ -58,16 +60,16 @@ groundMesh.castShadow = false;
 groundMesh.receiveShadow = true;
 scene.add(groundMesh);
 
-const spotLight = new THREE.SpotLight(0xffffff, 500);
-spotLight.position.copy(sun).multiplyScalar(100);
-spotLight.distance = 1000;
-spotLight.castShadow = true;
-spotLight.shadow.bias = -0.0001;
-spotLight.penumbra = 1;
-scene.add(spotLight);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.copy(sun).multiplyScalar(100)
+directionalLight.castShadow = true;
+directionalLight.shadow.bias = -0.001;
+directionalLight.intensity = 5;
+directionalLight.penumbra = 1;
+scene.add(directionalLight);
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-ambientLight.position.copy(sun)
+//ambientLight.position.copy(sun)
 scene.add(ambientLight)
 
 const loader = new GLTFLoader().setPath("/model/");

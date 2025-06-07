@@ -13,8 +13,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: skyblue;
 }
 
+/*
 #home::before {
     content: '';
     position: absolute;
@@ -27,11 +29,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     filter: blur(5px); /* Adjust the blur radius as needed */
-    z-index: -1; /* Ensure the background stays behind the content */
-}
+    /*z-index: -1;  Ensure the background stays behind the content */
 
 body {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     min-height: 100vh;
     display: flex;
     flex-direction: column;

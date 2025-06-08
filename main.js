@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+//import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { Sky } from 'three/addons/objects/Sky.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
@@ -111,7 +111,7 @@ const objLoader = new OBJLoader();
 document.getElementById('progress-container').style.display = 'block';
 // Load the .mtl file first
 mtlLoader.load(
-  '/model/mad/textures/Village1.mtl', // Path to your .mtl file
+  'Village1.mtl', // Path to your .mtl file
   (materials) => {
     // Preload materials
     materials.preload();
@@ -120,7 +120,7 @@ mtlLoader.load(
 
     // Load the .obj file
     objLoader.load(
-      '/model/mad/textures/Village1.obj', // Path to your .obj file
+      'Village1.obj', // Path to your .obj file
       (object) => {
         // Position the object
         object.position.set(0, 0, 0);

@@ -105,29 +105,67 @@ nav {
     color: #ffffff;
 }
 
+.no-underline {
+    text-decoration: none;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.hamburger {
+    display: none;
+    font-family: 'PixelCraft', sans-serif;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+.menu-items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px;
+}
+
 @media (max-width: 768px) {
     nav {
-        padding: 0px;
+        padding: 10px 0;
+    }
+
+    .hamburger {
+        display: block;
+        position: relative;
+    }
+
+    .menu-items {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+        padding: 0;
+    }
+    
+    .menu-items.active{
+        display: flex;
     }
 
     #options {
         flex-direction: column;
-        position: relative;
-        flex-wrap: wrap;
-        display: flex;
         gap: 15px;
     }
 
     #options a {
         font-size: 16px;
     }
+
+    .logo {
+        display: block;
+        margin: 0 auto;
+    }
 }
 
-.no-underline {
-    text-decoration: none;
-    padding-right: 50px;
-    padding-left: 50px;
-}
+
 
 /* Horizontal Rule */
 hr {

@@ -115,3 +115,8 @@ window.onload = function() {
         }
     });
 };
+
+function toggleMenu() {
+    const menu = document.querySelector('.menu-items');
+    menu.classList.toggle('active');
+}

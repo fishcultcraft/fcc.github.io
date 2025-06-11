@@ -68,41 +68,8 @@ directionalLight.shadow.camera.top = 200;
 directionalLight.shadow.camera.bottom = -500;
 scene.add(directionalLight);
 
-// Add helper for light direction
-//const lightHelper = new THREE.DirectionalLightHelper(directionalLight, 1000);
-//scene.add(lightHelper);
-// Add helper for shadow camera frustum
-//const shadowCameraHelper = new THREE.CameraHelper(directionalLight.shadow.camera);
-//scene.add(shadowCameraHelper);
-
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
 scene.add(ambientLight);
-
-
-//GLTF loader(not being used)
-//const loader = new GLTFLoader().setPath("/model/");
-//loader.load('Barrel.gltf', (gltf) => {
-//  console.log('loading model');
-//  const mesh = gltf.scene;
-//  mesh.scale.set(0.05, 0.05, 0.05); //scale
-
-//  mesh.traverse((child) => {
-//    if (child.isMesh) {
-//      child.castShadow = true;
-//      child.receiveShadow = true;
-//    }
-    
-//  });
-
-//  mesh.position.set(0, 0, 0); //position
-  //scene.add(mesh);
-
-//  document.getElementById('progress-container').style.display = 'none';
-//}, (xhr) => {
-//  console.log(`loading ${xhr.loaded / xhr.total * 100}%`);
-//}, (error) => {
-//  console.error(error);
-//});
 
 // MTL loader
 const mtlLoader = new MTLLoader();
@@ -122,19 +89,18 @@ mtlLoader.load(
     objLoader.load(
       'Village1.obj', // Path to your .obj file
       (object) => {
-        // Position the object
-        object.position.set(0, 0, 0);
-        object.scale.set(0.5,0.5,0.5)
-
         object.traverse((child) => {
-          if (child){
+          if (child.isMesh){
             child.castShadow = true;
             child.receiveShadow = true;
           }
         })
         // Add to scene
+        // Position the object
+        object.position.set(0, 0, 0);
+        object.scale.set(0.5,0.5,0.5)
         scene.add(object);
-
+        
         document.getElementById('progress-container').style.display = 'none';
       },
       (xhr) => {
@@ -156,6 +122,7 @@ mtlLoader.load(
     console.error('An error happened loading MTL:', error);
   }
 );
+
 
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;

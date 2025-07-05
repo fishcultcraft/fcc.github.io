@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-//import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { Sky } from 'three/addons/objects/Sky.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
@@ -73,6 +72,7 @@ scene.add(ambientLight);
 
 // MTL loader
 const mtlLoader = new MTLLoader();
+mtlLoader.setPath('/');
 const objLoader = new OBJLoader();
 
 document.getElementById('progress-container').style.display = 'block';
@@ -80,6 +80,7 @@ document.getElementById('progress-container').style.display = 'block';
 mtlLoader.load(
   'Village1.mtl', // Path to your .mtl file
   (materials) => {
+    console.log('Loaded materials:', Object.keys(materials.materials));
     // Preload materials
     materials.preload();
     // Assign materials to OBJLoader
@@ -90,9 +91,10 @@ mtlLoader.load(
       'Village1.obj', // Path to your .obj file
       (object) => {
         object.traverse((child) => {
-          if (child.isMesh){
+          if (child){
             child.castShadow = true;
             child.receiveShadow = true;
+            console.log('Mesh name:', child.name, 'Material:', child.material);
           }
         })
         // Add to scene

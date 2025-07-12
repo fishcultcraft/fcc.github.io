@@ -115,7 +115,6 @@ const patchNotes = [
             </ul>
         `
     }
-    // Add your patch notes here {title, date, content}
 ];
 
 function displayPatchNotes() {

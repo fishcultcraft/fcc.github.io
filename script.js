@@ -9,6 +9,45 @@ function clicked(){
 
 const patchNotes = [
     {
+        title: "Happy Ghasts & Hidden Chambers",
+        date: "07/12/2025",
+        content: `
+            <p>New Features:</p>
+            <ul>
+                <li>Happy Ghasts</li>
+                <li>* Friendly Nether pals! Waterlog Dried Ghast blocks to spawn Ghastlings, which grow into Happy Ghasts. Ride them with a settle. Ride them with a harness (3 leather, 2 glass, 1 wool). They heal in rain or at cloud level!</li>
+                <li>Ghastlings</li>
+                <li>* Cute baby Happy Ghasts. Feed snowballs to grow faster.</li>
+                <li>Dried Ghast Blocks</li>
+                <li>* Found in Nether fossils or crafted with 1 soul sand, 8 ghast tears.</li>
+                <li>New Paintings</li>
+                <li>* 5 awesome Minecraft-themed artworks.</li>
+                <li>Trial Chamber Maps</li>
+                <li>* Buy from journeyman cartographer villagers to find trial chambers.</li>
+                
+            </ul>
+            <p>Changes:</p>
+            <ul>
+                <li>Villagers trade better</li>
+                <li>* librarians give enchanted books for fewer emeralds.</li>
+                <li>Trial chambers run smoother with varied mob spawns.</li>
+                <li>Bundles now craft with 6 leather, 2 string.</li>
+                <li>Happy Ghasts roam or stay leashed; harnessed ones stick closer.</li>
+                <li>Added UI scaling and color contrast for accessibility.</li>
+                <li>Vault block sounds got a boost.</li>
+                <li>Fixed crashes, bundle bugs, and Happy Ghast multiplayer issues.</li>
+                <li>Saddles are now craftable</li>
+
+            </ul>
+            <p>Removed Mods:</p>
+            <ul>
+            <li>Carpet Extra</li>
+            <li>Distant Horizons</li>
+            <li>Invview</li>
+            </ul>
+        `
+    },
+    {
         title: "Two IPs, One Fish",
         date: "06/02/2025",
         content: `
